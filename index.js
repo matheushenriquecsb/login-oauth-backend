@@ -1,8 +1,10 @@
 const express = require("express");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
+const passport = require("passport");
 const dotenv = require("dotenv");
 const authRoutes = require("./routes/auth");
+require("./passport");
 dotenv.config();
 const app = express();
 
