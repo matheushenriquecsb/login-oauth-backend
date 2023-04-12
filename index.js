@@ -1,10 +1,11 @@
-const express = require("express");
-const cookieSession = require("cookie-session");
-const cors = require("cors");
-const passport = require("passport");
-const dotenv = require("dotenv");
-const authRoutes = require("./routes/auth");
-require("./passport");
+import express from "express";
+import cookieSession from "cookie-session";
+import cors from "cors";
+import passport from "passport";
+import authRoutes from "./routes/auth.js";
+import dotenv from "dotenv";
+import "./passport.js";
+
 dotenv.config();
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 app.use(
   cors({
     origin: "http://localhost:3000",

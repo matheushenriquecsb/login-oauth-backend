@@ -1,20 +1,18 @@
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const passport = require("passport");
-//import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
+import passport from "passport";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 dotenv.config();
 
 //Google settings
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://www.example.com/auth/google/callback",
+      clientID: process.env.CLIENT_GOOGLE_ID,
+      clientSecret: process.env.CLIENT_GOOGLE_SECRET,
+      callbackURL: "/auth/google/callback",
     },
-    function (accessToken, refreshToken, profile, cb) {
-      dotenv(null, profile);
+    function (accessToken, refreshToken, profile, done) {
+      done(null, profile);
     }
   )
 );

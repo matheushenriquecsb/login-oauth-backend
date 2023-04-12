@@ -1,8 +1,9 @@
-const router = require("express").Router();
-const passport = require("passport");
-
-const dotenv = require("dotenv");
+import express from "express";
+import passport from "passport";
+import dotenv from "dotenv";
 dotenv.config();
+
+const router = express.Router();
 
 router.get("/login/sucess", (req, res) => {
   res.status(201).json({ message: "failure", user: req.user });
@@ -29,4 +30,4 @@ router.get(
   })
 );
 
-module.exports = router;
+export default router;
